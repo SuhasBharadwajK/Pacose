@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PaCoSe.Providers.Users
+namespace PaCoSe.Providers
 {
     public class UsersProvider : IUsersContract
     {

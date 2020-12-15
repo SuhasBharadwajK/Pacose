@@ -5,7 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaCoSe.Caching\PaCoSe.Caching.csproj" />
     <ProjectReference Include="..\PaCoSe.Contracts\PaCoSe.Contracts.csproj" />
+    <ProjectReference Include="..\PaCoSe.Data\PaCoSe.Data.csproj" />
   </ItemGroup>
 
 </Project>
