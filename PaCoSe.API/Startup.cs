@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PaCoSe.API.Extensions;
+using PaCoSe.Infra.Extensions;
 
 namespace PaCoSe.API
 {
@@ -26,6 +28,11 @@ namespace PaCoSe.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.RegisterDatabaseProviders(this.Configuration["Database:ConnectionString"], this.Configuration["Database:Provider"]);
+            services.RegisterCacheProviders(bool.Parse(this.Configuration["Redis:IsEnabled"]), this.Configuration["Redis:ConnectionString"], int.Parse(this.Configuration["Redis:DefaultTimeout"]));
+            services.RegisterMappingProfiles();
+            services.RegisterDataProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

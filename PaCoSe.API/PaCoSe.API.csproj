@@ -4,5 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PaCoSe.Contracts\PaCoSe.Contracts.csproj" />
+    <ProjectReference Include="..\PaCoSe.Infra\PaCoSe.Infra.csproj" />
+    <ProjectReference Include="..\PaCoSe.Models\PaCoSe.Models.csproj" />
+    <ProjectReference Include="..\PaCoSe.Providers\PaCoSe.Providers.csproj" />
+  </ItemGroup>
+
 
 </Project>
