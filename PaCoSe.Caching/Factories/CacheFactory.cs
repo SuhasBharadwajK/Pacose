@@ -32,16 +32,14 @@ namespace PaCoSe.Caching.Factories
             {
                 if (CacheFactory._redisConnection != null && CacheFactory._redisConnection.IsConnected)
                 {
-                    var redisCache = new RedisCacheProvider(CacheFactory._redisConnection.GetDatabase(), defaultTimeout);
-                    return redisCache;
+                    return new RedisCacheProvider(CacheFactory._redisConnection.GetDatabase(), defaultTimeout);
                 }
 
                 CacheFactory._redisConnection = ConnectionMultiplexer.Connect(cacheConnectionString);
                 if (CacheFactory._redisConnection.IsConnected)
                 {
                     // Return the redis cache provider.
-                    var redisCache = new RedisCacheProvider(CacheFactory._redisConnection.GetDatabase(), defaultTimeout);
-                    return redisCache;
+                    return new RedisCacheProvider(CacheFactory._redisConnection.GetDatabase(), defaultTimeout);
                 }
             }
 
