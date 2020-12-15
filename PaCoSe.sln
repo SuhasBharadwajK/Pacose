@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaCoSe.Logging", "PaCoSe.Lo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaCoSe.Audit", "PaCoSe.Audit\PaCoSe.Audit.csproj", "{2C878A28-6C2A-4F28-BE15-7860B2857F7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaCoSe.Identity", "PaCoSe.Identity\PaCoSe.Identity.csproj", "{0019CD8F-501A-4420-B2AD-F21FF261DE7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaCoSe.Identity", "PaCoSe.Identity\PaCoSe.Identity.csproj", "{0019CD8F-501A-4420-B2AD-F21FF261DE7B}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PaCoSe.DB", "PaCoSe.DB\PaCoSe.DB.sqlproj", "{EA678F4E-AFA1-43FD-B519-654E5B49AAAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaCoSe.Data", "PaCoSe.Data\PaCoSe.Data.csproj", "{B926BF37-0E21-403E-B396-49CB51BEF006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaCoSe.Data", "PaCoSe.Data\PaCoSe.Data.csproj", "{B926BF37-0E21-403E-B396-49CB51BEF006}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaCoSe.Caching", "PaCoSe.Caching\PaCoSe.Caching.csproj", "{55E7E412-71B9-42E9-B4C2-8ED4CD7B0C81}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{B926BF37-0E21-403E-B396-49CB51BEF006}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B926BF37-0E21-403E-B396-49CB51BEF006}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B926BF37-0E21-403E-B396-49CB51BEF006}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55E7E412-71B9-42E9-B4C2-8ED4CD7B0C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55E7E412-71B9-42E9-B4C2-8ED4CD7B0C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55E7E412-71B9-42E9-B4C2-8ED4CD7B0C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55E7E412-71B9-42E9-B4C2-8ED4CD7B0C81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
