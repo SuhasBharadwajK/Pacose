@@ -58,9 +58,9 @@ namespace PaCoSe.Infra.Persistence
             {
                 dynamic entity = poco;
                 entity.CreatedBy = this.RequestContext.EntityName;
-                entity.CreatedOn = DateTime.UtcNow;
+                entity.DateCreated = DateTime.UtcNow;
                 entity.ModifiedBy = this.RequestContext.EntityName;
-                entity.ModifiedOn = DateTime.UtcNow;
+                entity.DateModified = DateTime.UtcNow;
             }
             catch (RuntimeBinderException)
             {
@@ -80,16 +80,16 @@ namespace PaCoSe.Infra.Persistence
             {
                 dynamic entity = poco;
                 entity.ModifiedBy = this.RequestContext.EntityName;
-                entity.ModifiedOn = DateTime.UtcNow;
+                entity.DateModified = DateTime.UtcNow;
 
                 if (!columns.Contains("ModifiedBy"))
                 {
                     columns = columns.Append("ModifiedBy");
                 }
 
-                if (!columns.Contains("ModifiedOn"))
+                if (!columns.Contains("DateModified"))
                 {
-                    columns = columns.Append("ModifiedOn");
+                    columns = columns.Append("DateModified");
                 }
             }
             catch (RuntimeBinderException)
@@ -104,12 +104,12 @@ namespace PaCoSe.Infra.Persistence
             var poco = this.Get<T>(id);
             if (isSoftDelete)
             {
-                var columns = new List<string> { "IsDeleted", "ModifiedBy", "ModifiedOn" };
+                var columns = new List<string> { "IsDeleted", "ModifiedBy", "DateModified" };
                 try
                 {
                     dynamic entity = poco;
                     entity.ModifiedBy = this.RequestContext.EntityName;
-                    entity.ModifiedOn = DateTime.UtcNow;
+                    entity.DateModified = DateTime.UtcNow;
                     entity.IsDeleted = true;
                 }
                 catch (RuntimeBinderException)
@@ -134,9 +134,9 @@ namespace PaCoSe.Infra.Persistence
                 foreach (var record in records)
                 {
                     record.SetProperty("CreatedBy", this.RequestContext.EntityName);
-                    record.SetProperty("CreatedOn", DateTime.UtcNow);
+                    record.SetProperty("DateCreated", DateTime.UtcNow);
                     record.SetProperty("ModifiedBy", this.RequestContext.EntityName);
-                    record.SetProperty("ModifiedOn", DateTime.UtcNow);
+                    record.SetProperty("DateModified", DateTime.UtcNow);
                 }
             }
 
@@ -169,7 +169,7 @@ namespace PaCoSe.Infra.Persistence
             foreach (var record in records)
             {
                 record.SetProperty("ModifiedBy", this.RequestContext.EntityName);
-                record.SetProperty("ModifiedOn", DateTime.UtcNow);
+                record.SetProperty("DateModified", DateTime.UtcNow);
             }
 
             if (!columnsToUpdate.Contains("ModifiedBy"))
@@ -177,9 +177,9 @@ namespace PaCoSe.Infra.Persistence
                 columnsToUpdate = columnsToUpdate.Append("ModifiedBy");
             }
 
-            if (!columnsToUpdate.Contains("ModifiedOn"))
+            if (!columnsToUpdate.Contains("DateModified"))
             {
-                columnsToUpdate = columnsToUpdate.Append("ModifiedOn");
+                columnsToUpdate = columnsToUpdate.Append("DateModified");
             }
 
             if (useTransaction)
@@ -203,13 +203,13 @@ namespace PaCoSe.Infra.Persistence
                 return;
             }
 
-            var softDeleteColumns = new string[] { "IsDeleted", "ModifiedBy", "ModifiedOn" };
+            var softDeleteColumns = new string[] { "IsDeleted", "ModifiedBy", "DateModified" };
 
             foreach (var record in records)
             {
                 record.SetProperty("IsDeleted", true);
                 record.SetProperty("ModifiedBy", this.RequestContext.EntityName);
-                record.SetProperty("ModifiedOn", DateTime.UtcNow);
+                record.SetProperty("DateModified", DateTime.UtcNow);
             }
 
             if (useTransaction)
