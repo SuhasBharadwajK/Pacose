@@ -17,7 +17,7 @@ namespace PaCoSe.API.Controllers
 
         // POST /broadcast -> Anonymous
         [HttpPost("broadcast")]
-        public TransientDevice BroadcastAvailableDevice(AuthorizationRequest authorizationRequest)
+        public Device BroadcastAvailableDevice(AuthorizationRequest authorizationRequest)
         {
             return this.DeviceContract.AddDeviceBroadcastRequest(authorizationRequest);
         }

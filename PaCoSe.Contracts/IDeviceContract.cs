@@ -4,15 +4,23 @@ namespace PaCoSe.Contracts
 {
     public interface IDeviceContract
     {
-        TransientDevice AddDeviceBroadcastRequest(AuthorizationRequest authorizationRequest);
+        void UpdateDeviceName(int id, string name);
 
-        DeviceConfig GetDeviceConfig(int id);
+        Device AddDeviceBroadcastRequest(AuthorizationRequest authorizationRequest);
 
-        Device OwnDevice(string code);
+        Device GetDeviceFromIdentifier(string token);
+
+        DeviceConfig GetDeviceConfig(string token);
+
+        Device OwnDevice(string code, User user);
+
+        Device GetDevice(int id);
 
         bool ValidateDevice(int id, string code);
 
         bool RemoveDevice(int id);
+
+        string RefreshDeviceToken(int deviceId);
 
         DeviceConfig AddLimits(int id, DeviceConfig deviceConfig);
 

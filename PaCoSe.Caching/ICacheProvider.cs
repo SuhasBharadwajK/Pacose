@@ -17,5 +17,7 @@ namespace PaCoSe.Caching
         void AddOrUpdate<T>(string cacheKey, Func<T> dataLoader, TimeSpan timeout);
 
         void Remove(string cacheKey);
+
+        void Remove(string[] cacheKeys);
     }
 }

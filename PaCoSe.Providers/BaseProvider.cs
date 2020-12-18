@@ -1,4 +1,6 @@
-﻿using PaCoSe.Caching;
+﻿using AutoMapper;
+using PaCoSe.Caching;
+using PaCoSe.Infra.Persistence;
 
 namespace PaCoSe.Providers
 {
@@ -6,9 +8,15 @@ namespace PaCoSe.Providers
     {
         protected ICacheProvider CacheProvider { get; set; }
 
-        public BaseProvider(ICacheProvider cacheProvider)
+        protected IMapper Mapper { get; set; }
+
+        protected IAppDatabase Database { get; set; }
+
+        public BaseProvider(ICacheProvider cacheProvider, IMapper mapper, IAppDatabase appDatabase)
         {
             this.CacheProvider = cacheProvider;
+            this.Mapper = mapper;
+            this.Database = appDatabase;
         }
     }
 }

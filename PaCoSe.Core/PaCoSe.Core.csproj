@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaCoSe.Data\PaCoSe.Data.csproj" />
     <ProjectReference Include="..\PaCoSe.Models\PaCoSe.Models.csproj" />
   </ItemGroup>
 

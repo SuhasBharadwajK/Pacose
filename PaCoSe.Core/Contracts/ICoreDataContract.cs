@@ -10,5 +10,7 @@ namespace PaCoSe.Core.Contracts
         User GetUser(string userName);
 
         bool UpdateUserSub(string userName, string sub);
+
+        Device GetDevice(string token);
     }
 }

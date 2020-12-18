@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PaCoSe.Contracts;
 using PaCoSe.Models;
 
 namespace PaCoSe.API.Controllers
@@ -11,11 +12,18 @@ namespace PaCoSe.API.Controllers
     [Route("api/[controller]")]
     public class UsersController : BaseApiController
     {
+        private IUsersContract UsersContract { get; set; }
+
+        public UsersController(IUsersContract usersContract)
+        {
+            this.UsersContract = usersContract;
+        }
+
         // POST /add -> User Token
-        [HttpPut("")]
+        [HttpPost("")]
         public User AddUser(User user)
         {
-            return null;
+            return this.UsersContract.AddUser(user);
         }
 
         // GET / -> User Token

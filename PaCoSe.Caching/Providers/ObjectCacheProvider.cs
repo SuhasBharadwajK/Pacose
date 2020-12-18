@@ -90,5 +90,16 @@ namespace PaCoSe.Caching.Providers
                 this.Cache.Remove(cacheKey);
             }
         }
+
+        public void Remove(string[] cacheKeys)
+        {
+            foreach (var cacheKey in cacheKeys)
+            {
+                if (this.Cache.Contains(cacheKey))
+                {
+                    this.Cache.Remove(cacheKey);
+                }
+            }
+        }
     }
 }

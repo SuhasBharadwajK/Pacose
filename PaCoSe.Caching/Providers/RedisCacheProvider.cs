@@ -74,5 +74,13 @@ namespace PaCoSe.Caching.Providers
         {
             this.Cache.KeyDelete(cacheKey);
         }
+
+        public void Remove(string[] cacheKeys)
+        {
+            foreach (var cacheKey in cacheKeys)
+            {
+                this.Cache.KeyDelete(cacheKey);
+            }
+        }
     }
 }

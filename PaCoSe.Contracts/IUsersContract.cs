@@ -9,6 +9,14 @@ namespace PaCoSe.Contracts
 
         User GetUser(int id);
 
+        User GetUserByUsername(string username);
+
+        User AddUser(User user);
+
+        User AddUserWithoutProfile(User user);
+
+        bool InviteUser(int userId);
+
         bool DeleteUser(int id);
 
         User UpdateUser(int id, User user);
