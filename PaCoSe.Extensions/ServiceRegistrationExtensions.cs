@@ -2,14 +2,15 @@
 using Microsoft.Extensions.DependencyInjection;
 using PaCoSe.Caching;
 using PaCoSe.Caching.Factories;
-using PaCoSe.Caching.Providers;
+using PaCoSe.Core.Contracts;
+using PaCoSe.Core.Providers;
+using PaCoSe.Infra.Context;
+using PaCoSe.Infra.Persistence;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
-namespace PaCoSe.Infra.Extensions
+namespace PaCoSe.Extensions
 {
     public static class ServiceRegistrationExtensions
     {
@@ -19,12 +20,23 @@ namespace PaCoSe.Infra.Extensions
             {
                 return new PetaPoco.Database(connectionString, dbProvider);
             });
+
+            services.AddTransient<IAppDatabase>((serviceProvider) =>
+            {
+                return new AppDatabase(serviceProvider.GetService<IRequestContext>(), connectionString, dbProvider);
+            });
         }
 
         public static void RegisterCacheProviders(this IServiceCollection services, bool isRedisEnabled, string redisConnectionStrings, int defaultTimeoutInMinutes)
         {
             services.AddScoped<ICacheFactory>((serviceProvider) => new CacheFactory(isRedisEnabled, redisConnectionStrings, TimeSpan.FromMinutes(defaultTimeoutInMinutes)));
             services.AddScoped<ICacheProvider>((serviceProvider) => serviceProvider.GetService<ICacheFactory>().GetCacheProvider());
+        }
+
+        public static void RegisterContextProviders(this IServiceCollection services)
+        {
+            services.AddScoped<ICoreDataContract, CoreDataProvider>();
+            services.AddScoped<IRequestContext>(serviceProvider => ActivatorUtilities.GetServiceOrCreateInstance<RequestContextBuilder>(serviceProvider).Build());
         }
 
         public static void RegisterMappingProfiles(this IServiceCollection services)

@@ -2,13 +2,15 @@
 
 namespace PaCoSe.Contracts
 {
-    public interface IDeviceService
+    public interface IDeviceContract
     {
-        bool BroadcastAvailableDevice(string code, Device device);
+        TransientDevice AddDeviceBroadcastRequest(AuthorizationRequest authorizationRequest);
 
         DeviceConfig GetDeviceConfig(int id);
 
-        Device AddDevice(string code);
+        Device OwnDevice(string code);
+
+        bool ValidateDevice(int id, string code);
 
         bool RemoveDevice(int id);
 

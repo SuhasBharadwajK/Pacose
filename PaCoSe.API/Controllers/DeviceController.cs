@@ -1,41 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PaCoSe.API.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using PaCoSe.API.Controllers.Core;
 using PaCoSe.Contracts;
+using PaCoSe.Infra.Context;
 using PaCoSe.Models;
 
 namespace PaCoSe.API.Controllers
 {
     [Route("api/[controller]")]
-    public class DeviceController : BaseApiController
+    public class DeviceController : BaseAuthorizedApiController
     {
-        public DeviceController(IUsersContract usersContract)
+        private IDeviceContract DeviceContract { get; set; }
+
+        private IUsersContract UsersContract { get; set; }
+
+        public DeviceController(IUsersContract usersContract, IDeviceContract deviceContract, IRequestContext requestContext) : base(requestContext)
         {
+            this.DeviceContract = deviceContract;
+            this.UsersContract = usersContract;
         }
 
-        // POST /broadcast -> Anonymous
-        [HttpPost("broadcast")]
-        public bool BroadcastAvailableDevice(DeviceBroadcastRequest deviceBroadcastRequest)
+        // POST /validate -> Device Token
+        [HttpPut("validate/{id}")]
+        public bool ValidateDevice(int id, [FromBody] string code)
         {
-            return false;
+            return this.DeviceContract.ValidateDevice(id, code);
         }
 
         // GET /:id/status -> Device Token
         [HttpGet("{id}/status")]
         public DeviceConfig GetDeviceConfig(int id)
         {
-            return null;
+            return this.DeviceContract.GetDeviceConfig(id);
         }
 
-        // POST /validate -> Device Token
-
         // POST /add -> User Token
-        [HttpPost("add")]
-        public Device AddDevice([FromBody] string code)
+        [HttpPost("own")]
+        public Device OwnDevice([FromBody] string code)
         {
             return null;
         }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using System.Collections.Generic;
 
-namespace PaCoSe.Infra.Extensions
+namespace PaCoSe.Extensions
 {
     public static class MappingExtensions
     {

@@ -13,7 +13,7 @@ namespace PaCoSe.API.Extensions
         public static void RegisterDataProviders(this IServiceCollection services)
         {
             services.AddScoped<IUsersContract, UsersProvider>();
-            services.AddScoped<IDeviceService, DeviceProvider>();
+            services.AddScoped<IDeviceContract, DeviceProvider>();
         }
     }
 }

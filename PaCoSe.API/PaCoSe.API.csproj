@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PaCoSe.Contracts\PaCoSe.Contracts.csproj" />
+    <ProjectReference Include="..\PaCoSe.Extensions\PaCoSe.Extensions.csproj" />
     <ProjectReference Include="..\PaCoSe.Infra\PaCoSe.Infra.csproj" />
     <ProjectReference Include="..\PaCoSe.Models\PaCoSe.Models.csproj" />
     <ProjectReference Include="..\PaCoSe.Providers\PaCoSe.Providers.csproj" />

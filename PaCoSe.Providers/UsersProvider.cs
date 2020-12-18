@@ -1,4 +1,5 @@
-﻿using PaCoSe.Contracts;
+﻿using PaCoSe.Caching;
+using PaCoSe.Contracts;
 using PaCoSe.Models;
 using System;
 using System.Collections.Generic;
@@ -6,8 +7,12 @@ using System.Text;
 
 namespace PaCoSe.Providers
 {
-    public class UsersProvider : IUsersContract
+    public class UsersProvider : BaseProvider, IUsersContract
     {
+        public UsersProvider(ICacheProvider cacheProvider) : base(cacheProvider)
+        {
+        }
+
         public bool DeleteUser(int id)
         {
             throw new NotImplementedException();

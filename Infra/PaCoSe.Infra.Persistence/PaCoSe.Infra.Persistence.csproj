@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\PaCoSe.Data\PaCoSe.Data.csproj" />
+    <ProjectReference Include="..\..\PaCoSe.Exceptions\PaCoSe.Exceptions.csproj" />
+    <ProjectReference Include="..\..\PaCoSe.Infra\PaCoSe.Infra.csproj" />
+  </ItemGroup>
+
+</Project>
