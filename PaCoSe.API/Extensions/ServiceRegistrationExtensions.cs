@@ -10,7 +10,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 
-namespace PaCoSe.Extensions
+namespace PaCoSe.API.Extensions
 {
     public static class ServiceRegistrationExtensions
     {
@@ -29,14 +29,14 @@ namespace PaCoSe.Extensions
 
         public static void RegisterCacheProviders(this IServiceCollection services, bool isRedisEnabled, string redisConnectionStrings, int defaultTimeoutInMinutes)
         {
-            services.AddScoped<ICacheFactory>((serviceProvider) => new CacheFactory(isRedisEnabled, redisConnectionStrings, TimeSpan.FromMinutes(defaultTimeoutInMinutes)));
-            services.AddScoped<ICacheProvider>((serviceProvider) => serviceProvider.GetService<ICacheFactory>().GetCacheProvider());
+            services.AddSingleton<ICacheFactory>((serviceProvider) => new CacheFactory(isRedisEnabled, redisConnectionStrings, TimeSpan.FromMinutes(defaultTimeoutInMinutes)));
+            services.AddSingleton<ICacheProvider>((serviceProvider) => serviceProvider.GetService<ICacheFactory>().GetCacheProvider());
         }
 
         public static void RegisterContextProviders(this IServiceCollection services)
         {
             services.AddScoped<ICoreDataContract, CoreDataProvider>();
-            services.AddScoped<IRequestContext>(serviceProvider => ActivatorUtilities.GetServiceOrCreateInstance<RequestContextBuilder>(serviceProvider).Build());
+            services.AddScoped<IRequestContext>(serviceProvider => ActivatorUtilities.GetServiceOrCreateInstance<RequestContextBuilder>(serviceProvider).Build(true, "Suhas"));
         }
 
         public static void RegisterMappingProfiles(this IServiceCollection services)
