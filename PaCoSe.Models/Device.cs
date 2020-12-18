@@ -17,6 +17,8 @@ namespace PaCoSe.Models
 
         public bool IsScreenTimeEnabled { get; set; }
 
+        public string Token { get; set; }
+
         public List<DeviceLimit> DeviceLimits { get; set; }
     }
 }

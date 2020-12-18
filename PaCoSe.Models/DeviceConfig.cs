@@ -9,6 +9,8 @@ namespace PaCoSe.Models
             this.DeviceLimits = new List<DeviceLimit>();
         }
 
+        public string Name { get; set; }
+
         public bool IsScreenTimeEnabled { get; set; }
 
         public List<DeviceLimit> DeviceLimits { get; set; }

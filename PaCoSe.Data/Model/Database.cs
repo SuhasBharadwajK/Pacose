@@ -244,6 +244,157 @@ namespace PaCoSe.Data.Model
         private string _ModifiedBy;
 
         [Column]
+        public bool IsDeleted
+        {
+            get { return _IsDeleted; }
+            set
+            {
+                _IsDeleted = value;
+                MarkColumnModified("IsDeleted");
+            }
+        }
+
+        private bool _IsDeleted;
+
+        [Column]
+        public long OwnerId
+        {
+            get { return _OwnerId; }
+            set
+            {
+                _OwnerId = value;
+                MarkColumnModified("OwnerId");
+            }
+        }
+
+        private long _OwnerId;
+
+    }
+
+    [TableName("[dbo].[DeviceOwnerView]")]
+    [PrimaryKey("Id")]
+    [ExplicitColumns]
+    public partial class DeviceOwnerView
+        : Record<DeviceOwnerView>
+    {
+        [Column]
+        public string CreatedBy
+        {
+            get { return _CreatedBy; }
+            set
+            {
+                _CreatedBy = value;
+                MarkColumnModified("CreatedBy");
+            }
+        }
+
+        private string _CreatedBy;
+
+        [Column]
+        public DateTime DateCreated
+        {
+            get { return _DateCreated; }
+            set
+            {
+                _DateCreated = value;
+                MarkColumnModified("DateCreated");
+            }
+        }
+
+        private DateTime _DateCreated;
+
+        [Column]
+        public DateTime DateModified
+        {
+            get { return _DateModified; }
+            set
+            {
+                _DateModified = value;
+                MarkColumnModified("DateModified");
+            }
+        }
+
+        private DateTime _DateModified;
+
+        [Column]
+        public string DeviceLimits
+        {
+            get { return _DeviceLimits; }
+            set
+            {
+                _DeviceLimits = value;
+                MarkColumnModified("DeviceLimits");
+            }
+        }
+
+        private string _DeviceLimits;
+
+        [Column]
+        public long Id
+        {
+            get { return _Id; }
+            set
+            {
+                _Id = value;
+                MarkColumnModified("Id");
+            }
+        }
+
+        private long _Id;
+
+        [Column]
+        public string IdentifierHash
+        {
+            get { return _IdentifierHash; }
+            set
+            {
+                _IdentifierHash = value;
+                MarkColumnModified("IdentifierHash");
+            }
+        }
+
+        private string _IdentifierHash;
+
+        [Column]
+        public bool IsScreenTimeEnabled
+        {
+            get { return _IsScreenTimeEnabled; }
+            set
+            {
+                _IsScreenTimeEnabled = value;
+                MarkColumnModified("IsScreenTimeEnabled");
+            }
+        }
+
+        private bool _IsScreenTimeEnabled;
+
+        [Column]
+        public string ModifiedBy
+        {
+            get { return _ModifiedBy; }
+            set
+            {
+                _ModifiedBy = value;
+                MarkColumnModified("ModifiedBy");
+            }
+        }
+
+        private string _ModifiedBy;
+
+        [Column]
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                _Name = value;
+                MarkColumnModified("Name");
+            }
+        }
+
+        private string _Name;
+
+        [Column]
         public long OwnerId
         {
             get { return _OwnerId; }
@@ -368,6 +519,19 @@ namespace PaCoSe.Data.Model
 
         private DateTime _ValidTill;
 
+        [Column]
+        public bool IsDeleted
+        {
+            get { return _IsDeleted; }
+            set
+            {
+                _IsDeleted = value;
+                MarkColumnModified("IsDeleted");
+            }
+        }
+
+        private bool _IsDeleted;
+
     }
 
     [TableName("[dbo].[User]")]
@@ -466,6 +630,32 @@ namespace PaCoSe.Data.Model
         }
 
         private string _Username;
+
+        [Column]
+        public bool IsActivated
+        {
+            get { return _IsActivated; }
+            set
+            {
+                _IsActivated = value;
+                MarkColumnModified("IsActivated");
+            }
+        }
+
+        private bool _IsActivated;
+
+        [Column]
+        public bool IsInvited
+        {
+            get { return _IsInvited; }
+            set
+            {
+                _IsInvited = value;
+                MarkColumnModified("IsInvited");
+            }
+        }
+
+        private bool _IsInvited;
 
     }
 
@@ -591,6 +781,347 @@ namespace PaCoSe.Data.Model
         }
 
         private long _UserId;
+
+    }
+
+    [TableName("[dbo].[UserProfileView]")]
+    [PrimaryKey("Id")]
+    [ExplicitColumns]
+    public partial class UserProfileView
+        : Record<UserProfileView>
+    {
+        [Column]
+        public string CreatedBy
+        {
+            get { return _CreatedBy; }
+            set
+            {
+                _CreatedBy = value;
+                MarkColumnModified("CreatedBy");
+            }
+        }
+
+        private string _CreatedBy;
+
+        [Column]
+        public DateTime DateCreated
+        {
+            get { return _DateCreated; }
+            set
+            {
+                _DateCreated = value;
+                MarkColumnModified("DateCreated");
+            }
+        }
+
+        private DateTime _DateCreated;
+
+        [Column]
+        public DateTime DateModified
+        {
+            get { return _DateModified; }
+            set
+            {
+                _DateModified = value;
+                MarkColumnModified("DateModified");
+            }
+        }
+
+        private DateTime _DateModified;
+
+        [Column]
+        public long Id
+        {
+            get { return _Id; }
+            set
+            {
+                _Id = value;
+                MarkColumnModified("Id");
+            }
+        }
+
+        private long _Id;
+
+        [Column]
+        public long ProfileId
+        {
+            get { return _ProfileId; }
+            set
+            {
+                _ProfileId = value;
+                MarkColumnModified("ProfileId");
+            }
+        }
+
+        private long _ProfileId;
+
+        [Column]
+        public string ModifiedBy
+        {
+            get { return _ModifiedBy; }
+            set
+            {
+                _ModifiedBy = value;
+                MarkColumnModified("ModifiedBy");
+            }
+        }
+
+        private string _ModifiedBy;
+
+        [Column]
+        public string Sub
+        {
+            get { return _Sub; }
+            set
+            {
+                _Sub = value;
+                MarkColumnModified("Sub");
+            }
+        }
+
+        private string _Sub;
+
+        [Column]
+        public string Username
+        {
+            get { return _Username; }
+            set
+            {
+                _Username = value;
+                MarkColumnModified("Username");
+            }
+        }
+
+        private string _Username;
+
+        [Column]
+        public string Email
+        {
+            get { return _Email; }
+            set
+            {
+                _Email = value;
+                MarkColumnModified("Email");
+            }
+        }
+
+        private string _Email;
+
+        [Column]
+        public string FirstName
+        {
+            get { return _FirstName; }
+            set
+            {
+                _FirstName = value;
+                MarkColumnModified("FirstName");
+            }
+        }
+
+        private string _FirstName;
+
+        [Column]
+        public string LastName
+        {
+            get { return _LastName; }
+            set
+            {
+                _LastName = value;
+                MarkColumnModified("LastName");
+            }
+        }
+
+        private string _LastName;
+
+        [Column]
+        public bool IsActivated
+        {
+            get { return _IsActivated; }
+            set
+            {
+                _IsActivated = value;
+                MarkColumnModified("IsActivated");
+            }
+        }
+
+        private bool _IsActivated;
+
+        [Column]
+        public bool IsInvited
+        {
+            get { return _IsInvited; }
+            set
+            {
+                _IsInvited = value;
+                MarkColumnModified("IsInvited");
+            }
+        }
+
+        private bool _IsInvited;
+
+        [Column]
+        public bool HasAcceptedInvitation
+        {
+            get { return _HasAcceptedInvitation; }
+            set
+            {
+                _HasAcceptedInvitation = value;
+                MarkColumnModified("HasAcceptedInvitation");
+            }
+        }
+
+        private bool _HasAcceptedInvitation;
+
+    }
+
+    [TableName("[dbo].[DeviceTokenView]")]
+    [PrimaryKey("Id")]
+    [ExplicitColumns]
+    public partial class DeviceTokenView
+        : Record<DeviceTokenView>
+    {
+        [Column]
+        public string CreatedBy
+        {
+            get { return _CreatedBy; }
+            set
+            {
+                _CreatedBy = value;
+                MarkColumnModified("CreatedBy");
+            }
+        }
+
+        private string _CreatedBy;
+
+        [Column]
+        public DateTime DateCreated
+        {
+            get { return _DateCreated; }
+            set
+            {
+                _DateCreated = value;
+                MarkColumnModified("DateCreated");
+            }
+        }
+
+        private DateTime _DateCreated;
+
+        [Column]
+        public DateTime DateModified
+        {
+            get { return _DateModified; }
+            set
+            {
+                _DateModified = value;
+                MarkColumnModified("DateModified");
+            }
+        }
+
+        private DateTime _DateModified;
+
+        [Column]
+        public string DeviceLimits
+        {
+            get { return _DeviceLimits; }
+            set
+            {
+                _DeviceLimits = value;
+                MarkColumnModified("DeviceLimits");
+            }
+        }
+
+        private string _DeviceLimits;
+
+        [Column]
+        public long Id
+        {
+            get { return _Id; }
+            set
+            {
+                _Id = value;
+                MarkColumnModified("Id");
+            }
+        }
+
+        private long _Id;
+
+        [Column]
+        public string IdentifierHash
+        {
+            get { return _IdentifierHash; }
+            set
+            {
+                _IdentifierHash = value;
+                MarkColumnModified("IdentifierHash");
+            }
+        }
+
+        private string _IdentifierHash;
+
+        [Column]
+        public bool IsScreenTimeEnabled
+        {
+            get { return _IsScreenTimeEnabled; }
+            set
+            {
+                _IsScreenTimeEnabled = value;
+                MarkColumnModified("IsScreenTimeEnabled");
+            }
+        }
+
+        private bool _IsScreenTimeEnabled;
+
+        [Column]
+        public string ModifiedBy
+        {
+            get { return _ModifiedBy; }
+            set
+            {
+                _ModifiedBy = value;
+                MarkColumnModified("ModifiedBy");
+            }
+        }
+
+        private string _ModifiedBy;
+
+        [Column]
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                _Name = value;
+                MarkColumnModified("Name");
+            }
+        }
+
+        private string _Name;
+
+        [Column]
+        public string TokenString
+        {
+            get { return _TokenString; }
+            set
+            {
+                _TokenString = value;
+                MarkColumnModified("TokenString");
+            }
+        }
+
+        private string _TokenString;
+
+        [Column]
+        public DateTime ValidTill
+        {
+            get { return _ValidTill; }
+            set
+            {
+                _ValidTill = value;
+                MarkColumnModified("ValidTill");
+            }
+        }
+
+        private DateTime _ValidTill;
 
     }
 

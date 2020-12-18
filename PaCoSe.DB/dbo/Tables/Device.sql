@@ -3,7 +3,7 @@
     [Name]                NVARCHAR (50)  NOT NULL,
     [IdentifierHash]      NVARCHAR (MAX) NOT NULL,
     [IsScreenTimeEnabled] BIT            NOT NULL,
-    [DeviceLimits]        NVARCHAR (MAX) CONSTRAINT [DF_Device_DeviceLimits] DEFAULT ('{}') NOT NULL,
+    [DeviceLimits]        NVARCHAR (MAX) CONSTRAINT [DF_Device_DeviceLimits] DEFAULT ('[]') NOT NULL,
     [DateCreated]         DATETIME       NOT NULL,
     [CreatedBy]           NVARCHAR (50)  NOT NULL,
     [DateModified]        DATETIME       NOT NULL,

@@ -1,4 +1,6 @@
-﻿namespace PaCoSe.Models
+﻿using System.Collections.Generic;
+
+namespace PaCoSe.Models
 {
     public class User
     {
@@ -13,6 +15,12 @@
 
         public string Username { get; set; }
 
+        public bool IsActivated { get; set; }
+
+        public bool IsInvited { get; set; }
+
         public UserProfile UserProfile { get; set; }
+
+        public List<Device> OwnedDevices { get; set; }
     }
 }
