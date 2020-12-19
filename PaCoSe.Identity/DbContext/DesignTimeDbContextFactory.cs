@@ -15,7 +15,7 @@ namespace PaCoSe.Identity.DbContext
                 .Build();
 
             var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
-            var connectionString = configuration["Database:ConnectionString"];
+            var connectionString = configuration["ConnectionStrings:IdentityDbConnection"];
             builder.UseSqlServer(connectionString);
             return new ApplicationDbContext(builder.Options);
         }

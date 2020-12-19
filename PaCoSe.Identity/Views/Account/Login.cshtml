@@ -1,17 +1,17 @@
 ﻿@model LoginViewModel
 
-<div class="login-container">
-    <p>Click to log into Address Consolidation Platform</p>
+<div class="login-buttons-container">
+    <p class="text-center">Click on a service to login</p>
     <form class="clear-margin">
         @foreach (var provider in Model.ExternalProviders)
         {
-            <a class="btn btn-primary login-button" asp-controller="Account"
+            <a class="btn btn-primary login-button @provider.CssClass" asp-controller="Account"
                asp-action="ExternalLogin" asp-route-provider="@provider.AuthenticationScheme"
                asp-route-returnUrl="@Model.ReturnUrl">
-                <span class="login-text">
-                    <img src="~/images/@provider.IconFilename" class="float-left inline-block">
+                <div class="login-text">
+                    <img src="~/images/@provider.IconFilename" class="float-left inline-block provider-logo">
                     <div class="inline-block">@provider.Message</div>
-                </span>
+                </div>
             </a>
         }
     </form>

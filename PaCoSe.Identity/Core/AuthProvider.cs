@@ -15,5 +15,7 @@
         public string Message { get; set; }
 
         public string CookieName { get; set; }
+
+        public string CssClass { get; set; }
     }
 }

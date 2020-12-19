@@ -32,7 +32,8 @@ namespace PaCoSe.Identity
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews(); string connectionString = this.Configuration["ConnectionStrings:DbConnection"];
+            services.AddControllersWithViews();
+            string connectionString = this.Configuration["ConnectionStrings:IdentityDbConnection"];
             var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
 
             services.AddIdentity<AppUser, AppRole>()
@@ -43,17 +44,27 @@ namespace PaCoSe.Identity
                 .AddInMemoryIdentityResources(Resources.GetIdentityResources())
                 .AddInMemoryApiResources(Resources.GetApiResources())
                 // TODO: Uncommment the below lines when SQL server for identity is implemented.
-                //.AddOperationalStore(options => options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
-                //.AddConfigurationStore(options => options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                .AddOperationalStore(options => options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
+                .AddConfigurationStore(options => options.ConfigureDbContext = builder => builder.UseSqlServer(connectionString, sqlOptions => sqlOptions.MigrationsAssembly(migrationsAssembly)))
                 .AddAspNetIdentity<AppUser>()
                 .LoadSigningCredentialFrom(this.Configuration["Certificate:Thumbprint"]);
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie("cookie")
-                .AddOpenIdConnect(
-                "Office365",
-                options =>
+                .AddGoogle("Google", options =>
                 {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = this.Configuration["AuthProviders:Google:ClientId"];
+                    options.ClientSecret = this.Configuration["AuthProviders:Google:ClientSecret"];
+                    options.Scope.Add("openid");
+                    options.Scope.Add("https://www.googleapis.com/auth/userinfo.profile");
+                    options.Scope.Add("https://www.googleapis.com/auth/userinfo.email");
+                    options.ReturnUrlParameter = "/Account/ExternalLoginCallback";
+                })
+                .AddOpenIdConnect("Office365", options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                     options.SignOutScheme = IdentityServerConstants.SignoutScheme;
 
                     options.ClientId = this.Configuration["AuthProviders:Office365:ClientId"];
@@ -87,7 +98,7 @@ namespace PaCoSe.Identity
 
             services.AddScoped<ICoreDataContract, CoreDataProvider>();
 
-            services.RegisterDatabaseProviders(this.Configuration["ConnectionStrings:DbConnection"], this.Configuration["ConnectionStrings:Provider"]);
+            services.RegisterDatabaseProviders(this.Configuration["ConnectionStrings:AppDbConnection"], this.Configuration["ConnectionStrings:Provider"]);
             services.RegisterCacheProviders(bool.Parse(this.Configuration["Redis:IsEnabled"]), this.Configuration["Redis:ConnectionString"], int.Parse(this.Configuration["Redis:DefaultTimeout"]));
             services.RegisterMappingProfiles();
 

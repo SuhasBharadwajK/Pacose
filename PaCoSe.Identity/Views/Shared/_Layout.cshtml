@@ -2,16 +2,29 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Address Consolidation Platform | Login</title>
+    <title>Parental Control Server  |  Login</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
 </head>
 <body>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="d-flex col-12 p-0 login-container h-100 header">
+        <div class="banner-image h-100 float-left side-banner px-0">
+            <img src="~/images/login-banner.jpg" class="h-100" alt="" />
+        </div>
+        <div class="right-content-container w-100">
+            <div class="right-content-cell">
+                <div class="right-content">
+                    <div class="content-header w-100 text-center">
+                        @*<img src="~/images/Logo@48px.png" alt="Logo" />*@
+                        <span class="d-block bank-caption">Parental Controls</span>
+                    </div>
+                    <div class="content-body">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

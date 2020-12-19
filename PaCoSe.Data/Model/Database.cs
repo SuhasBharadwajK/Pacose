@@ -959,19 +959,6 @@ namespace PaCoSe.Data.Model
 
         private bool _IsInvited;
 
-        [Column]
-        public bool HasAcceptedInvitation
-        {
-            get { return _HasAcceptedInvitation; }
-            set
-            {
-                _HasAcceptedInvitation = value;
-                MarkColumnModified("HasAcceptedInvitation");
-            }
-        }
-
-        private bool _HasAcceptedInvitation;
-
     }
 
     [TableName("[dbo].[DeviceTokenView]")]

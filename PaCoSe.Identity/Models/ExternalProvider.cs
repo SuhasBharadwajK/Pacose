@@ -9,5 +9,7 @@
         public string IconFilename { get; set; }
 
         public string Message { get; set; }
+
+        public string CssClass { get; set; }
     }
 }

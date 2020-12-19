@@ -62,7 +62,6 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
 }
 
 .footer {
@@ -72,22 +71,85 @@ body {
     line-height: 60px; /* Vertically center the text there */
 }
 
-.login-container {
+.banner-image {
+    background-color: #8f623324;
+}
+
+.banner-image img {
+    position: relative;
+    z-index: -1;
+}
+
+.right-content-container {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.right-content-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.right-content {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content-header {
+    text-align: center;
+    font-size: 35px;
+    /*margin-top: 85px;*/
+    display: inline-block;
+}
+
+.login-buttons-container {
     margin: 0 auto;
-    margin-top: 250px;
-    width: 400px;
-    height: 140px;
-    background-color: #EDEDED;
+    /*margin-top: 250px;*/
+    /*width: 400px;*/
+    /*background-color: #EDEDED;*/
     padding: 25px;
     border-radius: 5px;
-    border: 1px solid #bfbfbf;
+    /*border: 1px solid #bfbfbf;*/
 }
 
 .login-button {
     width: 100%;
+    margin-bottom: 10px;
+}
+
+.login-button.google {
+    background-color: #ffffff;
+    border-color: #414141;
+    color: #414141;
+}
+
+.login-button.o365 {
+    background-color: #de3c00;
+    border-color: #d73d04;
+}
+
+.login-button.o365:active {
+    background-color: #de3c00 !important;
+    border-color: #d73d04 !important;
+}
+
+.login-button.o365:focus {
+    box-shadow: 0 0 0 0.2rem #d73d0487 !important;
+}
+
+.login-button .provider-logo {
+    width: 24px;
 }
 
 .login-text {
     display: inline-block;
     width: 230px;
+}
+
+@media (max-width: 1266px), (max-aspect-ratio: 8/5) {
+    .banner-image {
+        display: none;
+    }
 }

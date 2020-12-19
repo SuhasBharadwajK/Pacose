@@ -183,7 +183,7 @@ namespace PaCoSe.Identity.Controllers
                 return this.RedirectToAction(nameof(this.Login));
             }
 
-            var result = await HttpContext.AuthenticateAsync(IdentityConstants.ExternalScheme);
+            var result = await HttpContext.AuthenticateAsync(IdentityServerConstants.ExternalCookieAuthenticationScheme);
             if (result?.Succeeded != true)
             {
                 this.ErrorMessage = "External authentication error";
@@ -207,8 +207,8 @@ namespace PaCoSe.Identity.Controllers
             claims.Remove(userIdClaim);
             var provider = result.Properties.Items["LoginProvider"];
             var userId = userIdClaim.Value;
-            var userName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.PreferredUserName)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Upn)?.Value;
-            var displayName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value;
+            var userName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.PreferredUserName)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            var displayName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
 
             User existingUser;
 
@@ -224,6 +224,7 @@ namespace PaCoSe.Identity.Controllers
 
                     //this.GetLogger(userId, displayName, userName)
                     //    .LogEvent(Logging.Models.EventType.UnauthorizedLoginAttempt, entityId: userName ?? displayName ?? userId, logItems: logs);
+
                     return this.RedirectToAction(nameof(this.AccessDenied));
                 }
             }
@@ -243,8 +244,8 @@ namespace PaCoSe.Identity.Controllers
                     DisplayName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ?? claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value
                 };
 
-                var r1 = await this.userManager.CreateAsync(user);
-                var r2 = await this.userManager.AddLoginAsync(user, new UserLoginInfo(provider, userId, provider));
+                var userCreationResult = await this.userManager.CreateAsync(user);
+                var loginCreationResult = await this.userManager.AddLoginAsync(user, new UserLoginInfo(provider, userId, provider));
             }
 
             if (string.IsNullOrEmpty(existingUser.Sub))
@@ -379,6 +380,7 @@ namespace PaCoSe.Identity.Controllers
                     AuthenticationScheme = x.Name,
                     IconFilename = authProviders.Find(p => p.Name == x.Name)?.IconFilename,
                     Message = authProviders.Find(p => p.Name == x.Name)?.Message,
+                    CssClass = authProviders.Find(p => p.Name == x.Name)?.CssClass
                 }).ToList();
 
             var allowLocal = true;
