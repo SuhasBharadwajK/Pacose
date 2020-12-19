@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+
 a {
   color: #0366d6;
 }
@@ -17,3 +18,16 @@ code {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button:focus {
+  outline: none !important;
+}
+
+.main-content-container {
+  height: calc(100% - 64px);
+
+  .app-container {
+    height: 100%;
+    top: 64px;
+  }
+}

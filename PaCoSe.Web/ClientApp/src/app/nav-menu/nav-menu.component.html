@@ -1,6 +1,23 @@
 <header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  <mat-toolbar color="primary" class="app-top-nav">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Parental Controls</span>
+    <span class="top-nav-spacer"></span>
+    <div class="example-button-container">
+      <button mat-icon-button aria-label="User Profile" [matMenuTriggerFor]="menu">
+        <mat-icon>face</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Switch Theme</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar>
+  <!-- <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow"
   >
     <div class="container">
       <a class="navbar-brand" [routerLink]="['/']">PaCoSe.Web</a>
@@ -40,5 +57,5 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </nav> -->
 </header>
