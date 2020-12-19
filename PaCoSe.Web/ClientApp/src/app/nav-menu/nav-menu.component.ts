@@ -1,5 +1,4 @@
-import { MatSidenav } from '@angular/material/sidenav';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,9 +6,4 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent {
-    @Input('drawer') drawer: MatSidenav;
-
-    toggle() {
-      this.drawer.toggle();
-  }
 }

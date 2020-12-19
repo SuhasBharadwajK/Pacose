@@ -15,6 +15,7 @@ import { MaterialComponentsModule } from './material-module';
 import { DevicesComponent } from './home/devices/devices.component';
 import { SettingsComponent } from './home/settings/settings.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
     FetchDataComponent,
     DevicesComponent,
     SettingsComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -1,61 +1,19 @@
-<header>
-  <mat-toolbar color="primary" class="app-top-nav">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Parental Controls</span>
-    <span class="top-nav-spacer"></span>
-    <div class="example-button-container">
-      <button mat-icon-button aria-label="User Profile" [matMenuTriggerFor]="menu">
-        <mat-icon>face</mat-icon>
+<div class="nav-menu-container">
+  <mat-list>
+    <mat-list-item class="mb-4">
+      <button mat-icon-button aria-label="Dashboard" matTooltip="Dashboard" matTooltipPosition="right" [routerLink]="['/app/dashboard']" [routerLinkActive]="['mat-accent']">
+        <mat-icon>dashboard</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Settings</button>
-        <button mat-menu-item>Switch Theme</button>
-        <button mat-menu-item>Logout</button>
-      </mat-menu>
-    </div>
-  </mat-toolbar>
-  <!-- <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow"
-  >
-    <div class="container">
-      <a class="navbar-brand" [routerLink]="['/']">PaCoSe.Web</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target=".navbar-collapse"
-        aria-label="Toggle navigation"
-        [attr.aria-expanded]="isExpanded"
-        (click)="toggle()"
-      >
-        <span class="navbar-toggler-icon"></span>
+    </mat-list-item>
+    <mat-list-item class="mb-4">
+      <button mat-icon-button aria-label="My Devices" matTooltip="My Devices" matTooltipPosition="right" [routerLink]="['/app/devices']" [routerLinkActive]="['mat-accent']">
+        <mat-icon>devices</mat-icon>
       </button>
-      <div
-        class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse"
-        [ngClass]="{ show: isExpanded }"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li
-            class="nav-item"
-            [routerLinkActive]="['link-active']"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/counter']"
-              >Counter</a
-            >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-            >
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-</header>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-icon-button aria-label="Settings" matTooltip="Settings" matTooltipPosition="right" [routerLink]="['/app/settings']" [routerLinkActive]="['mat-accent']">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </mat-list-item>
+   </mat-list>
+</div>

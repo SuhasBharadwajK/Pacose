@@ -1,10 +1,10 @@
 <body>
-  <app-nav-menu [drawer]="drawer"></app-nav-menu>
+  <app-header [drawer]="drawer"></app-header>
   <div class="main-content-container">
     <mat-sidenav-container class="app-container">
       <mat-sidenav mode="side" #drawer>
         <div class="side-nav-container">
-          Sidenav
+          <app-nav-menu></app-nav-menu>
         </div>
       </mat-sidenav>
       <mat-sidenav-content class="main-content">
