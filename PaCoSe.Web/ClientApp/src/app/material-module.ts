@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
     exports: [
@@ -19,6 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatCardModule,
         MatListModule,
         MatTooltipModule,
+        MatExpansionModule,
     ],
 })
 export class MaterialComponentsModule { }

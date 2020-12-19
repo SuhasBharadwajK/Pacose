@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,8 @@ import { DevicesComponent } from './home/devices/devices.component';
 import { SettingsComponent } from './home/settings/settings.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
+import { DeviceComponent } from './home/devices/device/device.component';
+import { DevicesService } from './common/services/devices.service';
 
 @NgModule({
   declarations: [
@@ -27,17 +29,21 @@ import { HeaderComponent } from './header/header.component';
     DevicesComponent,
     SettingsComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     MaterialComponentsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    DevicesService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
