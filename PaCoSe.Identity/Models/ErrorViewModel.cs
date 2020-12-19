@@ -1,11 +1,9 @@
-using System;
-
-namespace PaCoSe.Identity.Models
+﻿namespace PaCoSe.Identity.Models
 {
     public class ErrorViewModel
     {
         public string RequestId { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public bool ShowRequestId => !string.IsNullOrEmpty(this.RequestId);
     }
 }

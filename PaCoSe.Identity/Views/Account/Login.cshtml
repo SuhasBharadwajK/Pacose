@@ -1,0 +1,18 @@
+﻿@model LoginViewModel
+
+<div class="login-container">
+    <p>Click to log into Address Consolidation Platform</p>
+    <form class="clear-margin">
+        @foreach (var provider in Model.ExternalProviders)
+        {
+            <a class="btn btn-primary login-button" asp-controller="Account"
+               asp-action="ExternalLogin" asp-route-provider="@provider.AuthenticationScheme"
+               asp-route-returnUrl="@Model.ReturnUrl">
+                <span class="login-text">
+                    <img src="~/images/@provider.IconFilename" class="float-left inline-block">
+                    <div class="inline-block">@provider.Message</div>
+                </span>
+            </a>
+        }
+    </form>
+</div>
