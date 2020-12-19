@@ -1,7 +1,6 @@
-﻿using PaCoSe.Infra.Mappings;
-using PaCoSe.Models;
+﻿using PaCoSe.Models;
 
-namespace PaCoSe.Infra.Persistence.Mappings
+namespace PaCoSe.Core.Mappings
 {
     public class UserMappingProfile : MappingProfile
     {

@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using PaCoSe.Infra.Mappings;
 using PaCoSe.Models;
 using System.Collections.Generic;
 
-namespace PaCoSe.Infra.Persistence.Mappings
+namespace PaCoSe.Core.Mappings
 {
     public class DeviceMappingProfile : MappingProfile
     {

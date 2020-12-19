@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace PaCoSe.Infra.Mappings
+namespace PaCoSe.Core.Mappings
 {
     public class MappingProfile : Profile
     {
