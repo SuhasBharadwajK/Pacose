@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { DeviceComponent } from './home/devices/device/device.component';
 import { DevicesComponent } from './home/devices/devices.component';
@@ -17,8 +15,6 @@ const routes: Routes = [
             { path: 'devices/:id', component: DeviceComponent, data: { animation: 'left' } },
             { path: 'settings', component: SettingsComponent, data: { animation: 'bottom' }, pathMatch: 'full' },
             { path: 'dashboard', component: DashboardComponent, data: { animation: 'top' }, pathMatch: 'full' },
-            { path: 'counter', component: CounterComponent, pathMatch: 'full' },
-            { path: 'fetch-data', component: FetchDataComponent, pathMatch: 'full' },
         ]
     },
     // { path: 'login', component: LoginComponent, pathMatch: 'full' },
