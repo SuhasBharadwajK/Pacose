@@ -13,10 +13,10 @@ const routes: Routes = [
     {
         path: 'app', component: HomeComponent, children: [
             { path: '', redirectTo: 'devices', pathMatch: 'full' },
-            { path: 'devices', component: DevicesComponent, pathMatch: 'full' },
-            { path: 'devices/:id', component: DeviceComponent, pathMatch: 'full' },
-            { path: 'settings', component: SettingsComponent, pathMatch: 'full' },
-            { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
+            { path: 'devices', component: DevicesComponent, data: { animation: 'verticalCentre' } },
+            { path: 'devices/:id', component: DeviceComponent, data: { animation: 'left' } },
+            { path: 'settings', component: SettingsComponent, data: { animation: 'bottom' }, pathMatch: 'full' },
+            { path: 'dashboard', component: DashboardComponent, data: { animation: 'top' }, pathMatch: 'full' },
             { path: 'counter', component: CounterComponent, pathMatch: 'full' },
             { path: 'fetch-data', component: FetchDataComponent, pathMatch: 'full' },
         ]

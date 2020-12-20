@@ -1,2 +1,4 @@
-<router-outlet></router-outlet>
+<main [@routeAnimations]="{value: prepareRoute(outlet), params: { heightDiff: heightDiff } }">
+    <router-outlet #outlet="outlet"></router-outlet>
+</main>
 
