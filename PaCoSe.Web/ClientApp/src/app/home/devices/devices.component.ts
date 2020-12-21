@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '../../common/models/device';
 import { DevicesService } from '../../common/services/devices.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DeviceComponent } from './device/device.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-devices',
@@ -15,22 +18,27 @@ export class DevicesComponent implements OnInit {
   }
 
   constructor(
-    private devicesService: DevicesService
-  ) {  }
+    private devicesService: DevicesService,
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    ) {  }
 
   ngOnInit(): void {
     this.devicesService.getMyDevices().subscribe(data => {
       this.devices = data && data.length ? data.map(d => new Device(d)) : [];
     });
+
+    const deviceId = parseInt(this.route.snapshot.paramMap.get('id') || '', 10);
+    if (!isNaN(deviceId) && deviceId > 0) {
+      this.openDeviceDialog(deviceId);
+    }
   }
 
-  expand(device: Device) {
-    this.devices.forEach(d => {
-      if (d.id === device.id) {
-        d.isExpanded = true;
-      } else {
-        d.isExpanded = false;
-      }
+  openDeviceDialog(deviceId: number) {
+    const dialogRef = this.dialog.open(DeviceComponent, { data: { deviceId: deviceId } });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Do something.
     });
   }
 }

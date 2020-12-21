@@ -1,1 +1,28 @@
-<p>Viewing {{device.name}}</p>
+<h2 mat-dialog-title>{{device.name}}</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Details">
+            <div class="device-section">
+                <app-device-details></app-device-details>
+            </div>
+        </mat-tab>
+        <mat-tab label="Limits">
+            <div class="device-section">
+                <app-device-limits></app-device-limits>
+            </div>
+        </mat-tab>
+        <mat-tab label="Owners">
+            <div class="device-section">
+                <app-device-owners></app-device-owners>
+            </div>
+        </mat-tab>
+        <mat-tab label="Settings">
+            <div class="device-section">
+                <app-device-settings></app-device-settings>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button (click)="closeDialog()">Close</button>
+</mat-dialog-actions>

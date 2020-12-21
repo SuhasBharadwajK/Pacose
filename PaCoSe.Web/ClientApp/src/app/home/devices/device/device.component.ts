@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Device } from '../../../common/models/device';
 import { DevicesService } from '../../../common/services/devices.service';
 
@@ -10,17 +11,39 @@ import { DevicesService } from '../../../common/services/devices.service';
 })
 export class DeviceComponent implements OnInit {
   device: Device;
+  routes = [
+    {
+      link: './details',
+      title: 'Details'
+    },
+    {
+      link: './limits',
+      title: 'Limits'
+    },
+    {
+      link: './settings',
+      title: 'Settings'
+    }
+  ];
 
   constructor(
-    private route: ActivatedRoute,
-    private devicesService: DevicesService
+    private devicesService: DevicesService,
+    private router: Router,
+    private dialogRef: MatDialogRef<DeviceComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: { deviceId: number }
   ) {
+    this.devicesService.getDevice(data.deviceId).subscribe(d => {
+      this.device = new Device(d);
+    });
   }
 
   ngOnInit(): void {
-    const deviceId = parseInt(this.route.snapshot.paramMap.get('id') || '', 10);
-    this.devicesService.getDevice(deviceId).subscribe(data => {
-      this.device = new Device(data);
+    this.dialogRef.beforeClosed().subscribe(() => {
+      this.router.navigate(['..']);
     });
+  }
+
+  closeDialog() {
+    this.dialogRef.close();
   }
 }

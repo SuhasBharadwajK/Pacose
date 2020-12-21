@@ -16,6 +16,10 @@ import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { DeviceComponent } from './home/devices/device/device.component';
 import { DevicesService } from './common/services/devices.service';
+import { DeviceDetailsComponent } from './home/devices/device/device-details/device-details.component';
+import { DeviceLimitsComponent } from './home/devices/device/device-limits/device-limits.component';
+import { DeviceSettingsComponent } from './home/devices/device/device-settings/device-settings.component';
+import { DeviceOwnersComponent } from './home/devices/device/device-owners/device-owners.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { DevicesService } from './common/services/devices.service';
     SettingsComponent,
     DashboardComponent,
     HeaderComponent,
-    DeviceComponent
+    DeviceComponent,
+    DeviceDetailsComponent,
+    DeviceLimitsComponent,
+    DeviceSettingsComponent,
+    DeviceOwnersComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
