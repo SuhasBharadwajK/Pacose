@@ -1,24 +1,24 @@
-<h2 mat-dialog-title>{{device.name}}</h2>
+<!-- <h2 mat-dialog-title>{{device.name}}</h2> -->
 <mat-dialog-content class="mat-typography">
     <mat-tab-group dynamicHeight>
         <mat-tab label="Details">
             <div class="device-section">
-                <app-device-details></app-device-details>
+                <app-device-details [device]="device"></app-device-details>
             </div>
         </mat-tab>
         <mat-tab label="Limits">
             <div class="device-section">
-                <app-device-limits></app-device-limits>
+                <app-device-limits [device]="device"></app-device-limits>
             </div>
         </mat-tab>
         <mat-tab label="Owners">
             <div class="device-section">
-                <app-device-owners></app-device-owners>
+                <app-device-owners [device]="device"></app-device-owners>
             </div>
         </mat-tab>
         <mat-tab label="Settings">
             <div class="device-section">
-                <app-device-settings></app-device-settings>
+                <app-device-settings [device]="device"></app-device-settings>
             </div>
         </mat-tab>
     </mat-tab-group>

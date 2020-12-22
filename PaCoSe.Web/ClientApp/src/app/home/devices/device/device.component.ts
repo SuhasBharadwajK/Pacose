@@ -11,20 +11,6 @@ import { DevicesService } from '../../../common/services/devices.service';
 })
 export class DeviceComponent implements OnInit {
   device: Device;
-  routes = [
-    {
-      link: './details',
-      title: 'Details'
-    },
-    {
-      link: './limits',
-      title: 'Limits'
-    },
-    {
-      link: './settings',
-      title: 'Settings'
-    }
-  ];
 
   constructor(
     private devicesService: DevicesService,

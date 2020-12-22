@@ -11,6 +11,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
     exports: [
@@ -25,6 +28,9 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatExpansionModule,
         MatDialogModule,
         MatTabsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
     ],
 })
 export class MaterialComponentsModule { }

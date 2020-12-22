@@ -10,7 +10,7 @@
                 </mat-card-header>
                 <mat-card-content *ngIf="!device.isExpanded">
                     <img mat-card-image [src]="device.imageUrl" alt="Device Image">
-                    <mat-card-subtitle class="text-center">{{device.type}}</mat-card-subtitle>
+                    <mat-card-subtitle class="text-center">{{device.typeName}}</mat-card-subtitle>
                 </mat-card-content>
                 <mat-card-footer class="custom-card-footer" *ngIf="!device.isExpanded">
                     <a mat-button class="d-block" [routerLink]="['./', device.id]">

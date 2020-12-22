@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Device } from '../../../../common/models/device';
 
 @Component({
   selector: 'app-device-limits',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./device-limits.component.scss']
 })
 export class DeviceLimitsComponent implements OnInit {
+  @Input('device') device: Device;
 
   constructor() { }
 

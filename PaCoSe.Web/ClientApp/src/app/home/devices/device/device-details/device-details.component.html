@@ -1,1 +1,36 @@
-<p>device-details works!</p>
+<div class="example-container">
+    <div class="device-name-container" *ngIf="!isNameEditingActive">
+        <h2 class="d-inline-block">{{device.name}}</h2>
+        <button mat-icon-button aria-label="Edit device name" class="edit-icon icon ml-2"
+            (click)="isNameEditingActive = true">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+    <div *ngIf="isNameEditingActive">
+        <mat-form-field hintLabel="Max 50 characters" appearance="fill">
+            <mat-label>Enter some input</mat-label>
+            <input matInput #input maxlength="50" placeholder="Ex. My Pi" [(ngModel)]="deviceCopy.name">
+            <mat-hint align="end"></mat-hint>
+        </mat-form-field>
+    </div>
+    <div class="device-type float-left" *ngIf="!isNameEditingActive">
+        <span class="text-muted">Type:</span> <span class="text-dark ml-2">{{device.typeName}}</span>
+    </div>
+    <div class="float-left" *ngIf="isNameEditingActive">
+        <mat-form-field appearance="fill">
+            <mat-label>Type:</mat-label>
+            <mat-select [(value)]="deviceCopy.typeId">
+                <mat-option [value]="deviceType.id" *ngFor="let deviceType of deviceTypes">{{deviceType.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-icon-button aria-label="Save device name" class="post-edit-icon icon" (click)="saveDevice()">
+            <mat-icon>save</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="Cancel edit" class="post-edit-icon icon" (click)="cancelEditing()">
+            <mat-icon>cancel</mat-icon>
+        </button>
+    </div>
+    <div class="device-image float-right">
+        <img mat-card-image [src]="device.imageUrl" alt="Device Image">
+    </div>
+</div>
