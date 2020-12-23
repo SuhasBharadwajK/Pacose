@@ -35,7 +35,8 @@ export class DevicesComponent implements OnInit {
   }
 
   openDeviceDialog(deviceId: number) {
-    const dialogRef = this.dialog.open(DeviceComponent, { data: { deviceId: deviceId } });
+    const dialogRef = this.dialog.open(DeviceComponent, { data: { deviceId: deviceId },
+    width: '1100px' });
 
     dialogRef.afterClosed().subscribe(result => {
       // Do something.

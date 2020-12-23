@@ -24,6 +24,8 @@ namespace PaCoSe.Contracts
 
         DeviceConfig AddLimits(int id, DeviceConfig deviceConfig);
 
+        bool ToggleDeviceLimits(int id);
+
         bool AddOwnerToDevice(int id, User user);
 
         bool RemoveOwnerFromDevice(int id, int ownerId);

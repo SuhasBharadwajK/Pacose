@@ -1,1 +1,42 @@
-<p>device-limits works!</p>
+<div class="device-limits-container">
+    <p class="mb-2">Screen Time Limits</p>
+    <div>
+        <mat-slide-toggle [(ngModel)]="deviceCopy.isScreenTimeEnabled" (change)="toggleDeviceScreenTime($event)">
+            {{ deviceCopy.isScreenTimeEnabled ? 'On' : 'Off' }}
+        </mat-slide-toggle>
+    </div>
+
+    <div class="day-limit-container" *ngIf="device.isScreenTimeEnabled">
+        <div class="col-9 p-0 float-right">
+            <div class="float-left hour-header" *ngFor="let headerHour of headerHours">
+                <div class="limit-grid-cell-header">{{getTime(headerHour)}}</div>
+            </div>
+        </div>
+        <div class="col-12 p-0 day-limits">
+            <div class="day-limit" *ngFor="let dayOfTheWeek of daysOfTheWeek; let dayIndex = index;">
+                <div class="day-name col-1 p-0 float-left">{{dayOfTheWeek.dayName}}</div>
+                <div class="col-2 float-left pl-0" style="width: 100%;">
+                    <mat-form-field class="allowed-hours">
+                        <mat-label>Time Limit</mat-label>
+                        <mat-select [(ngModel)]="dayOfTheWeek.allowedHours"
+                            (selectionChange)="onAllowedHoursUpdated(dayOfTheWeek)">
+                            <mat-option value="0">Blocked</mat-option>
+                            <mat-option value="24">No Limit</mat-option>
+                            <mat-option [value]="allowedHour" *ngFor="let allowedHour of allowedHours">
+                                {{getHoursLabel(allowedHour)}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="limits-time-container col-9 p-0 float-left">
+                    <div class="grid-cell" [ngClass]="{ 'bg-gray': hour % 8 === 0 || hour % 8 === 1 }"
+                        *ngFor="let hour of hours"></div>
+                    <div class="grid-cell bg-dark-gray" [ngClass]="{'border-white' : gridIndex % 2 == 1}"
+                        *ngFor="let hour of hours; let gridIndex = index;"></div>
+                    <div class="grid-cell" [ngClass]="{ 'bg-gray': hour % 8 === 0 || hour % 8 === 1 }"
+                        *ngFor="let hour of hours"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

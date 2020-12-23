@@ -128,6 +128,22 @@ namespace PaCoSe.Providers
             return deviceConfig;
         }
 
+        public bool ToggleDeviceLimits(int id)
+        {
+            try
+            {
+                var device = this.GetDevice(id);
+                device.IsScreenTimeEnabled = !device.IsScreenTimeEnabled;
+                var deviceDataModel = this.Mapper.MapTo<Data.Model.Device>(device);
+                var result = this.Database.Update(deviceDataModel, new string[] { "IsScreenTimeEnabled" });
+                return result > 0;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public Device GetDevice(int id)
         {
             var device = this.Database.FirstOrDefault<Data.Model.Device>("WHERE Id = @0", id);

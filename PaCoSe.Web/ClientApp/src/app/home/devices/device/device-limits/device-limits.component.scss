@@ -1,0 +1,62 @@
+.limit-grid-cell {
+    padding: 5px;
+}
+
+.mat-grid-tile {
+    .mat-figure {
+        justify-content: left !important;
+    }
+}
+
+.grid-cell {
+    height: 15px;
+    width: calc(100%/48);
+    float: left;
+
+    &.divider-cell {
+        height: 30px;
+
+        &.first-row {
+            height: 15px;
+        }
+    }
+}
+
+.hour-header {
+    width: calc(100%/6);
+}
+
+.day-name {
+    margin-top: 14px;
+}
+
+.day-limit {
+    overflow: hidden;
+}
+
+.bg-gray {
+    background-color: #e4e4e4;
+}
+
+.bg-dark-gray {
+    background-color: #bababa;
+}
+
+.limits-grid-title {
+    width: 40px;
+}
+
+.allowed-hours {
+    width: 100%;
+    margin-top: -1.25rem;
+    position: relative;
+    top: 14px;
+}
+
+.day-limits {
+    clear: both;
+}
+
+.border-white {
+    border-right: 1px solid #f2f2f2;
+}

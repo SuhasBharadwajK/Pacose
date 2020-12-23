@@ -92,6 +92,11 @@ namespace PaCoSe.API.Controllers
             return this.DeviceContract.AddLimits(id, deviceConfig);
         }
 
+        public bool ToggleDeviceLimits(int id)
+        {
+            return this.DeviceContract.ToggleDeviceLimits(id);
+        }
+
         // PUT /add-owner/:id [User Token]
         [HttpPut("{id}/add-owner")]
         public bool AddOwnerToDevice(int id, User user)

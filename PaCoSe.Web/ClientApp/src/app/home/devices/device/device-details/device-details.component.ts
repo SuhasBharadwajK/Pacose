@@ -43,6 +43,6 @@ export class DeviceDetailsComponent implements OnInit {
   }
 
   initializeDeviceCopy() {
-    this.deviceCopy = new Device(this.device);
+    this.deviceCopy = new Device(this.device || {});
   }
 }

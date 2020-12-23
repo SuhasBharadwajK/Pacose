@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable, of } from 'rxjs';
 
 import { Device } from "../models/device";
+import { DeviceConfig } from "../models/device-config";
 import { DeviceType } from "../models/device-type";
 
 @Injectable()
@@ -103,5 +104,30 @@ export class DevicesService {
 
     public getDeviceTypes(): Observable<DeviceType[]> {
         return of(this.deviceTypes);
+    }
+
+    public toggleDeviceLimits(id: number): Observable<boolean> {
+        let device: Device = null;
+        for (let i = 0; i < this.devices.length; i++) {
+            const element = this.devices[i];
+            if (element.id === id) {
+                this.devices[i].isScreenTimeEnabled = !this.devices[i].isScreenTimeEnabled;
+                device = this.devices[i];
+            }
+        }
+
+        return of(device.isScreenTimeEnabled);
+    }
+
+    public addDeviceLimits(id: number, config: DeviceConfig): Observable<DeviceConfig> {
+        for (let i = 0; i < this.devices.length; i++) {
+            const element = this.devices[i];
+            if (element.id === id) {
+                this.devices[i].deviceLimits = config.deviceLimits;
+                this.devices[i].isScreenTimeEnabled = config.isScreenTimeEnabled;
+            }
+        }
+
+        return of(config);
     }
 }
