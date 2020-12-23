@@ -83,15 +83,15 @@ export class DevicesService {
         ];
     }
 
-    public getMyDevices(): Observable<Device[]> {
+    public getMyDevices = (): Observable<Device[]> => {
         return of(this.devices);
     }
 
-    public getDevice(deviceId: number): Observable<Device> {
+    public getDevice = (deviceId: number): Observable<Device> => {
         return of(this.devices.find(d => d.id === deviceId));
     }
 
-    public saveDevice(id: number, device: Device): Observable<Device> {
+    public saveDevice = (id: number, device: Device): Observable<Device> => {
         for (let i = 0; i < this.devices.length; i++) {
             const element = this.devices[i];
             if (element.id === id) {
@@ -102,11 +102,11 @@ export class DevicesService {
         return of(device);
     }
 
-    public getDeviceTypes(): Observable<DeviceType[]> {
+    public getDeviceTypes = (): Observable<DeviceType[]> => {
         return of(this.deviceTypes);
     }
 
-    public toggleDeviceLimits(id: number): Observable<boolean> {
+    public toggleDeviceLimits = (id: number): Observable<boolean> => {
         let device: Device = null;
         for (let i = 0; i < this.devices.length; i++) {
             const element = this.devices[i];
@@ -119,7 +119,7 @@ export class DevicesService {
         return of(device.isScreenTimeEnabled);
     }
 
-    public addDeviceLimits(id: number, config: DeviceConfig): Observable<DeviceConfig> {
+    public addDeviceLimits = (id: number, config: DeviceConfig): Observable<DeviceConfig> => {
         for (let i = 0; i < this.devices.length; i++) {
             const element = this.devices[i];
             if (element.id === id) {
