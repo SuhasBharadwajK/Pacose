@@ -2,9 +2,16 @@
     padding: 5px;
 }
 
-.mat-grid-tile {
-    .mat-figure {
-        justify-content: left !important;
+.divider-cell-container {
+    height: 30px;
+    
+    &.edge-row-cell {
+        height: 15px;
+    }
+
+    .divider-cell {
+        height: 100%;
+        background-color: #e4e4e4;
     }
 }
 
@@ -12,26 +19,32 @@
     height: 15px;
     width: calc(100%/48);
     float: left;
-
-    &.divider-cell {
-        height: 30px;
-
-        &.first-row {
-            height: 15px;
-        }
-    }
 }
 
 .hour-header {
     width: calc(100%/6);
 }
 
-.day-name {
-    margin-top: 14px;
-}
-
 .day-limit {
     overflow: hidden;
+    
+    &.first-day {
+
+        .day-name {
+            margin-top: 5px;
+            margin-top: 14px;
+        }
+
+        .allowed-hours {
+            top: 14px;
+        }
+    }
+
+    .allowed-hours {
+        width: 100%;
+        margin-top: -1.25rem;
+        position: relative;
+    }
 }
 
 .bg-gray {
@@ -44,13 +57,6 @@
 
 .limits-grid-title {
     width: 40px;
-}
-
-.allowed-hours {
-    width: 100%;
-    margin-top: -1.25rem;
-    position: relative;
-    top: 14px;
 }
 
 .day-limits {

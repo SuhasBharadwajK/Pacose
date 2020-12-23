@@ -13,9 +13,10 @@
             </div>
         </div>
         <div class="col-12 p-0 day-limits">
-            <div class="day-limit" *ngFor="let dayOfTheWeek of daysOfTheWeek; let dayIndex = index;">
-                <div class="day-name col-1 p-0 float-left">{{dayOfTheWeek.dayName}}</div>
-                <div class="col-2 float-left pl-0" style="width: 100%;">
+            <div class="day-limit" [ngClass]="{ 'first-day': dayIndex === 0 }" *ngFor="let dayOfTheWeek of daysOfTheWeek; let dayIndex = index;">
+                <div class="day-name col-1 p-0 float-left">
+                    {{dayOfTheWeek.dayName}}</div>
+                <div class="col-2 float-left pl-0">
                     <mat-form-field class="allowed-hours">
                         <mat-label>Time Limit</mat-label>
                         <mat-select [(ngModel)]="dayOfTheWeek.allowedHours"
@@ -28,13 +29,19 @@
                         </mat-select>
                     </mat-form-field>
                 </div>
+                <div class="limits-time-container col-9 p-0 float-left" *ngIf="dayIndex === 0">
+                    <div class="col-2 p-0 float-left divider-cell-container edge-row-cell"
+                        *ngFor="let hour of headerHours">
+                        <div class="col-3 p-0 divider-cell"></div>
+                    </div>
+                </div>
                 <div class="limits-time-container col-9 p-0 float-left">
-                    <div class="grid-cell" [ngClass]="{ 'bg-gray': hour % 8 === 0 || hour % 8 === 1 }"
-                        *ngFor="let hour of hours"></div>
                     <div class="grid-cell bg-dark-gray" [ngClass]="{'border-white' : gridIndex % 2 == 1}"
                         *ngFor="let hour of hours; let gridIndex = index;"></div>
-                    <div class="grid-cell" [ngClass]="{ 'bg-gray': hour % 8 === 0 || hour % 8 === 1 }"
-                        *ngFor="let hour of hours"></div>
+                    <div class="col-2 p-0 float-left divider-cell-container" *ngFor="let i of headerHours"
+                        [ngClass]="{ 'edge-row-cell': dayIndex === daysOfTheWeek.length - 1 }">
+                        <div class="col-3 p-0 divider-cell"></div>
+                    </div>
                 </div>
             </div>
         </div>
