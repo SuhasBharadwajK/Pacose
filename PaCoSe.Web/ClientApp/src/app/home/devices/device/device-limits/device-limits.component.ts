@@ -87,12 +87,6 @@ export class DeviceLimitsComponent implements OnInit {
       this.device.isScreenTimeEnabled = result.isScreenTimeEnabled;
     });
   }
-
-  trackByFn(index, item) {
-    return index;
-    // or if you have no unique identifier:
-    // return index;
-  }
 }
 
 class DayInWeek {
