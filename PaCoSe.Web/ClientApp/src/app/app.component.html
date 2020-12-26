@@ -1,5 +1,5 @@
-<body>
-  <app-header [drawer]="drawer"></app-header>
+<body [ngClass]="currentThemeClass">
+  <app-header [drawer]="drawer" [isDarkThemeActive]="isDarkThemeActive" (switchTheme)="toggleTheme($event)"></app-header>
   <div class="main-content-container">
     <mat-sidenav-container class="app-container">
       <mat-sidenav mode="side" #drawer>

@@ -1,5 +1,5 @@
 import { MatSidenav } from '@angular/material/sidenav';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,18 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    @Input('drawer') drawer: MatSidenav;
+  @Input('drawer') drawer: MatSidenav;
+  @Input('isDarkThemeActive') isDarkThemeActive: boolean;
+  @Output('switchTheme') switchTheme: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    toggle() {
-      this.drawer.toggle();
+  constructor() {
+  }
+
+  toggle() {
+    this.drawer.toggle();
+  }
+
+  toggleTheme() {
+    this.switchTheme?.emit(!this.isDarkThemeActive);
   }
 }
