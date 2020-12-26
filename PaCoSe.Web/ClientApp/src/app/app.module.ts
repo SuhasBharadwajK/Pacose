@@ -20,6 +20,8 @@ import { DeviceDetailsComponent } from './home/devices/device/device-details/dev
 import { DeviceLimitsComponent } from './home/devices/device/device-limits/device-limits.component';
 import { DeviceSettingsComponent } from './home/devices/device/device-settings/device-settings.component';
 import { DeviceOwnersComponent } from './home/devices/device/device-owners/device-owners.component';
+import { AddDeviceLimitsComponent } from './home/devices/device/device-limits/add-device-limits/add-device-limits.component';
+import { DeviceLimitsService } from './home/devices/device/device-limits/add-device-limits/device-limits.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { DeviceOwnersComponent } from './home/devices/device/device-owners/devic
     DeviceDetailsComponent,
     DeviceLimitsComponent,
     DeviceSettingsComponent,
-    DeviceOwnersComponent
+    DeviceOwnersComponent,
+    AddDeviceLimitsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,6 +50,7 @@ import { DeviceOwnersComponent } from './home/devices/device/device-owners/devic
   ],
   providers: [
     DevicesService,
+    DeviceLimitsService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,11 @@
+.schedule-interval {
+    .interval-cell {
+        overflow: auto;
+        float: left;
+
+        &.time-cell {
+            position: relative;
+            top: 13px;
+        }
+    }
+}

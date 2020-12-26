@@ -1,9 +1,9 @@
 export class LimitInterval {
-    public startTime: Date;
-    public endTime: Date;
+    public startTime: number;
+    public endTime: number;
 
     constructor(args) {
-        this.startTime = new Date(args?.startTime || new Date())
-        this.endTime = new Date(args?.endTime || new Date())
+        this.startTime = args?.startTime;
+        this.endTime = args?.endTime;
     }
 }

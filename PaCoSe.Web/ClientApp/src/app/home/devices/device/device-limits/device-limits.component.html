@@ -8,12 +8,12 @@
 
     <div class="day-limit-container" *ngIf="device.isScreenTimeEnabled">
         <div class="col-9 p-0 float-right">
-            <div class="float-left hour-header" *ngFor="let headerHour of headerHours">
+            <div class="float-left hour-header" *ngFor="let headerHour of headerHours; trackBy: trackByIndex;">
                 <div class="limit-grid-cell-header">{{getTime(headerHour)}}</div>
             </div>
         </div>
         <div class="col-12 p-0 day-limits">
-            <div class="day-limit" [ngClass]="{ 'first-day': dayIndex === 0 }" *ngFor="let dayOfTheWeek of daysOfTheWeek; let dayIndex = index;">
+            <div class="day-limit" [ngClass]="{ 'first-day': dayIndex === 0 }" *ngFor="let dayOfTheWeek of daysOfTheWeek; let dayIndex = index; trackBy: trackDayOfWeekBy;">
                 <div class="day-name col-1 p-0 float-left">
                     {{dayOfTheWeek.dayName}}</div>
                 <div class="col-2 float-left pl-0">
@@ -21,9 +21,9 @@
                         <mat-label>Time Limit</mat-label>
                         <mat-select [(ngModel)]="dayOfTheWeek.allowedHours"
                             (selectionChange)="onAllowedHoursUpdated(dayOfTheWeek)">
-                            <mat-option value="0">Blocked</mat-option>
-                            <mat-option value="24">No Limit</mat-option>
-                            <mat-option [value]="allowedHour" *ngFor="let allowedHour of allowedHours">
+                            <mat-option [value]="0">Blocked</mat-option>
+                            <mat-option [value]="24">No Limit</mat-option>
+                            <mat-option [value]="allowedHour" *ngFor="let allowedHour of allowedHours; trackBy: trackByIndex;">
                                 {{getHoursLabel(allowedHour)}}
                             </mat-option>
                         </mat-select>
@@ -31,14 +31,16 @@
                 </div>
                 <div class="limits-time-container col-9 p-0 float-left" *ngIf="dayIndex === 0">
                     <div class="col-2 p-0 float-left divider-cell-container edge-row-cell"
-                        *ngFor="let hour of headerHours">
+                        *ngFor="let hour of headerHours; trackBy: trackByIndex;">
                         <div class="col-3 p-0 divider-cell"></div>
                     </div>
                 </div>
                 <div class="limits-time-container col-9 p-0 float-left">
-                    <div class="grid-cell bg-dark-gray" [ngClass]="{'border-white' : gridIndex % 2 == 1}"
-                        *ngFor="let hour of hours; let gridIndex = index;"></div>
-                    <div class="col-2 p-0 float-left divider-cell-container" *ngFor="let i of headerHours"
+                    <div class="col-12 p-0 day-limits-scale" (click)="openLimitsDialog(dayOfTheWeek)">
+                        <div class="grid-cell bg-dark-gray" [ngClass]="{'border-white' : gridIndex % 2 == 1, 'active': isTimeActive(hour, dayOfTheWeek)}"
+                        *ngFor="let hour of hours; let gridIndex = index; trackBy: trackByIndex;"></div>
+                    </div>
+                    <div class="col-2 p-0 float-left divider-cell-container" *ngFor="let i of headerHours; trackBy: trackByIndex;"
                         [ngClass]="{ 'edge-row-cell': dayIndex === daysOfTheWeek.length - 1 }">
                         <div class="col-3 p-0 divider-cell"></div>
                     </div>

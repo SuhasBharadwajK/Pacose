@@ -4,8 +4,8 @@ namespace PaCoSe.Models
 {
     public class LimitInterval
     {
-        public DateTime StartTime { get; set; }
+        public decimal StartTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public decimal EndTime { get; set; }
     }
 }

@@ -1,3 +1,5 @@
+@import '../../../../variables.scss';
+
 .limit-grid-cell {
     padding: 5px;
 }
@@ -15,10 +17,29 @@
     }
 }
 
-.grid-cell {
-    height: 15px;
-    width: calc(100%/48);
-    float: left;
+.limits-time-container {
+    border-left: solid #ccc 1px;
+    border-right: solid #ccc 1px;
+}
+
+.day-limits-scale {
+    cursor: pointer;
+
+    .grid-cell {
+        height: 15px;
+        width: calc(100%/48);
+        float: left;
+
+        &.border-white {
+            &:not(:last-child) {
+                border-right: 1px solid #f2f2f2;
+            }
+        }
+
+        &.active {
+            background-color: $primary-color;
+        }
+    }
 }
 
 .hour-header {
@@ -61,8 +82,4 @@
 
 .day-limits {
     clear: both;
-}
-
-.border-white {
-    border-right: 1px solid #f2f2f2;
 }
