@@ -2,8 +2,6 @@
 	AS SELECT D.[Id]
       ,D.[Name]
       ,D.[IdentifierHash]
-      ,D.[IsScreenTimeEnabled]
-      ,D.[DeviceLimits]
 	  ,DO.[OwnerId]
       ,D.[DateCreated]
       ,D.[CreatedBy]

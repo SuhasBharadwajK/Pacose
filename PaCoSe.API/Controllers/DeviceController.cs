@@ -18,18 +18,18 @@ namespace PaCoSe.API.Controllers
             this.DeviceContract = deviceContract;
         }
 
-        // POST /validate [Device Token]
-        [HttpPut("validate/{id}")]
-        public bool ValidateDevice(int id, [FromBody] string code)
+        // POST /validate/:childId [Device Token]
+        [HttpPut("validate/{childId}")]
+        public bool ValidateDevice(int childId, [FromBody] string code)
         {
-            return this.DeviceContract.ValidateDevice(id, code);
+            return this.DeviceContract.ValidateDevice(this.RequestContext.Device.Id, childId, code);
         }
 
-        // GET /status [Device Token]
-        [HttpGet("status")]
-        public DeviceConfig GetDeviceConfig()
+        // GET /status/:childId [Device Token]
+        [HttpGet("status/{childId}")]
+        public DeviceConfig GetDeviceConfig(int childId)
         {
-            return this.DeviceContract.GetDeviceConfig(this.RequestContext.Device.IdentifierHash);
+            return this.DeviceContract.GetDeviceConfig(this.RequestContext.Device.IdentifierHash, childId);
         }
 
         // POST /refresh-token [Device Token]
@@ -39,87 +39,90 @@ namespace PaCoSe.API.Controllers
             return this.DeviceContract.RefreshDeviceToken(this.RequestContext.Device.Id);
         }
 
-        // PUT /update-name/:id [User Token]
-        [HttpPut("update-name/{id}")]
-        public void UpdateDeviceName(int id, [FromBody] string deviceName)
+        // PUT /update-name/:deviceId [User Token]
+        [HttpPut("update-name/{deviceId}")]
+        public void UpdateDeviceName(int deviceId, [FromBody] string deviceName)
         {
             // TODO: Move this repititive logic to a decorator.
-            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == id))
+            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == deviceId))
             {
                 throw new AccessDeniedException("You don't have access to this device");
             }
 
-            this.DeviceContract.UpdateDeviceName(id, deviceName);
+            this.DeviceContract.UpdateDeviceName(deviceId, deviceName);
         }
 
-        // POST /own [User Token]
-        [HttpPost("own")]
-        public Device OwnDevice([FromBody] string code)
+        // POST /claim-device [User Token]
+        [HttpPost("claim-device")]
+        public Device ClaimDevice([FromBody] string code)
         {
-            return this.DeviceContract.OwnDevice(code, this.RequestContext.User);
+            return this.DeviceContract.AddNewDeviceClaim(code, this.RequestContext.User);
         }
 
-        // POST /disown/:id [User Token]
-        [HttpPut("disown/{id}")]
-        public bool DisownDevice(int id)
+        // POST /disown/:deviceId [User Token]
+        [HttpPut("disown/{deviceId}")]
+        public bool DisownDevice(int deviceId)
         {
             // TODO: Move this repititive logic to a decorator.
-            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == id))
+            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == deviceId))
             {
                 throw new AccessDeniedException("You don't have access to this device");
             }
 
-            return this.DeviceContract.RemoveOwnerFromDevice(id, this.RequestContext.User.Id);
+            return this.DeviceContract.RemoveOwnerFromDevice(deviceId, this.RequestContext.User.Id);
         }
 
-        // DELETE /:id [User Token]
-        [HttpDelete("{id}")]
-        public bool RemoveDevice(int id)
+        // DELETE /:deviceId [User Token]
+        [HttpDelete("{deviceId}")]
+        public bool RemoveDevice(int deviceId)
         {
             return false;
         }
 
-        // PUT /:id/limits [User Token]
-        [HttpPut("{id}/limits")]
-        public DeviceConfig AddLimits(int id, DeviceConfig deviceConfig)
+        // PUT /:deviceId/limits/:childId [User Token]
+        [HttpPut("{deviceId}/limits/{childId}")]
+        public DeviceConfig AddLimits(int deviceId, int childId, DeviceConfig deviceConfig)
         {
             // TODO: Move this repititive logic to a decorator.
-            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == id))
+            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == deviceId))
             {
                 throw new AccessDeniedException("You don't have access to this device");
             }
 
-            return this.DeviceContract.AddLimits(id, deviceConfig);
+            return this.DeviceContract.AddLimits(deviceId, childId, deviceConfig);
         }
 
-        public bool ToggleDeviceLimits(int id)
+        // PUT /:deviceId/toggle-screen-time/:childId [User Token]
+        [HttpPut("{deviceId}/toggle-screen-time/{childId}")]
+        public bool ToggleDeviceLimits(int deviceId, int childId)
         {
-            return this.DeviceContract.ToggleDeviceLimits(id);
+            return this.DeviceContract.ToggleScreenTime(deviceId, childId);
         }
 
-        // PUT /add-owner/:id [User Token]
-        [HttpPut("{id}/add-owner")]
-        public bool AddOwnerToDevice(int id, User user)
+        // PUT /:deviceId/add-owner [User Token]
+        [HttpPut("{deviceId}/add-owner")]
+        public bool AddOwnerToDevice(int deviceId, User user)
         {
             // TODO: Move this repititive logic to a decorator.
-            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == id))
+            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == deviceId))
             {
                 throw new AccessDeniedException("You don't have access to this device");
             }
 
-            return this.DeviceContract.AddOwnerToDevice(id, user);
+            return this.DeviceContract.AddOwnerToDevice(deviceId, user);
         }
 
-        [HttpPut("{id}/remove-owner/{ownerId}")]
-        public bool RemoveOwnerFromDevice(int id, int ownerId)
+        // PUT /:deviceId/remove-owner/:ownerId [User Token]
+        [HttpPut("{deviceId}/remove-owner/{ownerId}")]
+        public bool RemoveOwnerFromDevice(int deviceId, int ownerId)
         {
             // TODO: Move this repititive logic to a decorator.
-            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == id))
+            if (!this.RequestContext.User.OwnedDevices.Any(d => d.Id == deviceId))
             {
                 throw new AccessDeniedException("You don't have access to this device");
             }
 
-            return this.DeviceContract.RemoveOwnerFromDevice(id, ownerId);
+            return this.DeviceContract.RemoveOwnerFromDevice(deviceId, ownerId);
         }
     }
 }

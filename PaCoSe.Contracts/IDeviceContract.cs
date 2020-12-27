@@ -6,28 +6,26 @@ namespace PaCoSe.Contracts
     {
         void UpdateDeviceName(int id, string name);
 
-        Device AddDeviceBroadcastRequest(AuthorizationRequest authorizationRequest);
+        CachedDevice AddDeviceBroadcastRequest(AuthorizationRequest authorizationRequest);
 
-        Device GetDeviceFromIdentifier(string token);
+        DeviceConfig GetDeviceConfig(string deviceIdentifierHash, int childId);
 
-        DeviceConfig GetDeviceConfig(string token);
+        Device AddNewDeviceClaim(string code, User user);
 
-        Device OwnDevice(string code, User user);
+        Device GetDevice(int deviceId);
 
-        Device GetDevice(int id);
+        bool ValidateDevice(int deviceId, int childId, string code);
 
-        bool ValidateDevice(int id, string code);
-
-        bool RemoveDevice(int id);
+        bool RemoveDevice(int deviceId);
 
         string RefreshDeviceToken(int deviceId);
 
-        DeviceConfig AddLimits(int id, DeviceConfig deviceConfig);
+        DeviceConfig AddLimits(int deviceId, int childId, DeviceConfig deviceConfig);
 
-        bool ToggleDeviceLimits(int id);
+        bool ToggleScreenTime(int deviceId, int childId);
 
-        bool AddOwnerToDevice(int id, User user);
+        bool AddOwnerToDevice(int deviceId, User user);
 
-        bool RemoveOwnerFromDevice(int id, int ownerId);
+        bool RemoveOwnerFromDevice(int deviceId, int ownerId);
     }
 }

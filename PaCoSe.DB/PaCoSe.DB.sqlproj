@@ -69,5 +69,8 @@
     <Build Include="dbo\Views\UserProfileView.sql" />
     <Build Include="dbo\Views\DeviceOwnerView.sql" />
     <Build Include="dbo\Views\DeviceTokenView.sql" />
+    <Build Include="dbo\Tables\ChildDeviceMapping.sql" />
+    <Build Include="dbo\Views\ChildDeviceView.sql" />
+    <Build Include="dbo\Tables\Child.sql" />
   </ItemGroup>
 </Project>

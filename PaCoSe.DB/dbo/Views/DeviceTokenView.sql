@@ -4,8 +4,6 @@
       ,D.[IdentifierHash]
 	  ,DT.[TokenString]
 	  ,DT.[ValidTill]
-      ,D.[IsScreenTimeEnabled]
-      ,D.[DeviceLimits]
       ,D.[DateCreated]
       ,D.[CreatedBy]
       ,D.[DateModified]
