@@ -9,11 +9,11 @@ using System.Linq;
 namespace PaCoSe.API.Controllers
 {
     [Route("api/[controller]")]
-    public class DeviceController : BaseAuthorizedApiController
+    public class DevicesController : BaseAuthorizedApiController
     {
         private IDeviceContract DeviceContract { get; set; }
 
-        public DeviceController(IDeviceContract deviceContract, IRequestContext requestContext) : base(requestContext)
+        public DevicesController(IDeviceContract deviceContract, IRequestContext requestContext) : base(requestContext)
         {
             this.DeviceContract = deviceContract;
         }
